@@ -1,0 +1,96 @@
+type Cafe @entity {
+  # Contract address
+  id: ID!
+
+  # Addresses
+  rent: Bytes!
+  rewarder: Bytes!
+  devAddress: Bytes!
+  feeAddress: Bytes!
+
+  # Constants
+  bonusMultiplier: BigInt!
+  accRentPrecision: BigInt!
+  withdrawFeePrecision: BigInt!
+  maxWithdrawFee: BigInt!
+
+  # Emission config
+  startTimestamp: BigInt!
+  totalAllocation: BigInt!
+  bonusEndTimestamp: BigInt!
+  rentPerSecond: BigInt!
+
+  # Pools
+  pools: [Pool!]! @derivedFrom(field: "cafe")
+  poolCount: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type Pool @entity {
+  id: ID!
+  cafe: Cafe!
+  lp: LP!
+
+  # Type
+  type: String!
+
+  # Configuration
+  token: Bytes!
+  allocation: BigInt!
+  withdrawFee: Int
+
+  # State
+  lastRewardTimestamp: BigInt!
+  accRentPerShare: BigInt!
+  balance: BigInt!
+  total: BigInt!
+
+  # Users
+  userCount: BigInt!
+  users: [User!]! @derivedFrom(field: "pool")
+
+  # Stats
+  rentHarvested: BigInt!
+  feesCollected: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type User @entity {
+  id: ID!
+
+  # User
+  address: Bytes!
+  pool: Pool!
+
+  # State
+  balance: BigInt!
+  total: BigInt!
+  debt: BigInt!
+  rentHarvested: BigInt!
+
+  # Stats
+  feesPaid: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type LP @entity {
+  id: ID!
+  pool: Pool!
+
+  # Configuration
+  symbol: String!
+  name: String!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}

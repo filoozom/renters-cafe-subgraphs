@@ -1,0 +1,18 @@
+{
+  "name": "cafe",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ renter-cafe/cafe",
+    "create-local": "graph create --node http://localhost:8020/ renter-cafe/cafe",
+    "remove-local": "graph remove --node http://localhost:8020/ renter-cafe/cafe",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 renter-cafe/cafe",
+    "prepare:custom": "mustache config/custom.json template.yaml > subgraph.yaml"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.23.2",
+    "@graphprotocol/graph-ts": "0.23.1",
+    "mustache": "^4.2.0"
+  }
+}
