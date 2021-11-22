@@ -94,3 +94,131 @@ type LP @entity {
   timestamp: BigInt!
   block: BigInt!
 }
+
+type StealablePropertiesFactory @entity {
+  id: ID!
+
+  # Properties
+  properties: [StealableProperty!]! @derivedFrom(field: "factory")
+
+  # Configuration
+  uri: String!
+  paused: Boolean!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type StealableProperty @entity {
+  id: ID!
+  factory: StealablePropertiesFactory!
+
+  # Properties
+  cap: BigInt!
+  minted: BigInt!
+  multiplier: BigInt!
+  bonus: BigInt!
+  protection: BigInt!
+  pools: [Pool!]!
+
+  # Steal
+  startRatio: BigInt!
+  endRatio: BigInt!
+  duration: BigInt!
+  keepRatio: BigInt!
+
+  # Upstream mints
+  stealMints: BigInt!
+  stealMintsDone: BigInt!
+
+  # Stats
+  timesStolen: BigInt!
+
+  # Owners
+  owners: [StealablePropertyOwner!]!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type StealablePropertyOwner @entity {
+  id: ID!
+  property: StealableProperty!
+  user: Bytes!
+
+  # Data
+  since: BigInt!
+  price: BigInt!
+
+  # Derived
+  protectedUntil: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type PropertyAuctionFactory @entity {
+  id: ID!
+  stealableProperties: StealablePropertiesFactory!
+
+  # Properties
+  auctions: [PropertyAuction!]! @derivedFrom(field: "factory")
+
+  # Configuration
+  cuts: [PropertyAuctionCut!]! @derivedFrom(field: "factory")
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type PropertyAuctionCut @entity {
+  id: ID!
+  factory: PropertyAuctionFactory!
+
+  # Configuration
+  user: Bytes!
+  amount: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type PropertyAuction @entity {
+  id: ID!
+  factory: PropertyAuctionFactory!
+
+  # Properties
+  content: [PropertyAuctionContent!]! @derivedFrom(field: "auction")
+
+  # Configuration
+  startPrice: BigInt!
+  endPrice: BigInt!
+  duration: BigInt!
+  startTimestamp: BigInt!
+
+  # State
+  done: Boolean!
+  priceWon: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type PropertyAuctionContent @entity {
+  id: ID!
+
+  # Configuration
+  auction: PropertyAuction!
+  property: StealableProperty!
+  count: BigInt!
+
+  # Metadata
+  timestamp: BigInt!
+  block: BigInt!
+}

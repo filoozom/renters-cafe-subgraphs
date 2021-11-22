@@ -1,5 +1,15 @@
 {
   "network": "custom",
-  "address": "0x389BBE4643bd4942c254752199E70b70059CeB37",
-  "startBlock": "0"
+  "cafe": {
+    "address": "0xBc45cA09c3d00a9bA25eB08b70849Db43A76BE03",
+    "startBlock": "0"
+  },
+  "stealableProperties": {
+    "address": "0xFFe63f7AeC1E895A182821885a6852735ED1E50F",
+    "startBlock": "0"
+  },
+  "propertyAuction": {
+    "address": "0xE491196981ddB787f0DDa69685a2623d26570B16",
+    "startBlock": "0"
+  }
 }

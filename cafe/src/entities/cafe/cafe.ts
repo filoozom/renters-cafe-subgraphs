@@ -1,8 +1,8 @@
 import { BigInt, dataSource, ethereum } from "@graphprotocol/graph-ts";
 
 // Generated
-import { Cafe } from "../../generated/schema";
-import { Cafe as Contract } from "../../generated/Cafe/Cafe";
+import { Cafe } from "../../../generated/schema";
+import { Cafe as Contract } from "../../../generated/Cafe/Cafe";
 
 export function getCafe(block: ethereum.Block): Cafe {
   const address = dataSource.address();

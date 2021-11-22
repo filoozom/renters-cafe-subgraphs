@@ -1,10 +1,10 @@
 import { BigInt } from "@graphprotocol/graph-ts";
 
 // Entities
-import { getCafe } from "./entities/cafe";
-import { getLP } from "./entities/lp";
-import { getPool } from "./entities/pool";
-import { getUser } from "./entities/user";
+import { getCafe } from "./entities/cafe/cafe";
+import { getLP } from "./entities/cafe/lp";
+import { getPool } from "./entities/cafe/pool";
+import { getUser } from "./entities/cafe/user";
 
 // Generated
 import {

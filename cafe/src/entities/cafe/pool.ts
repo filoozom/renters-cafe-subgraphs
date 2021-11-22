@@ -4,13 +4,14 @@ import { Address, BigInt, ethereum } from "@graphprotocol/graph-ts";
 import { getCafe } from "./cafe";
 
 // Generated
-import { Pool } from "../../generated/schema";
+import { Pool } from "../../../generated/schema";
 
 export function getPool(poolId: BigInt, block: ethereum.Block): Pool {
-  const cafe = getCafe(block);
   let pool = Pool.load(poolId.toString());
 
   if (pool === null) {
+    const cafe = getCafe(block);
+
     pool = new Pool(poolId.toString());
     pool.cafe = cafe.id;
 
