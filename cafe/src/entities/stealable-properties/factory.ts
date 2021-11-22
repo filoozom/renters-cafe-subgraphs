@@ -6,14 +6,14 @@ import { StealableProperties as Contract } from "../../../generated/StealablePro
 
 export function getFactory(
   block: ethereum.Block,
-  address?: Address
+  address: Address | null = null
 ): StealablePropertiesFactory {
-  address = address || dataSource.address();
-  let factory = StealablePropertiesFactory.load(address.toHex());
+  const id = address === null ? dataSource.address() : address;
+  let factory = StealablePropertiesFactory.load(id.toHex());
 
   if (factory === null) {
-    const contract = Contract.bind(address);
-    factory = new StealablePropertiesFactory(address.toHex());
+    const contract = Contract.bind(id);
+    factory = new StealablePropertiesFactory(id.toHex());
 
     // Configuration
     factory.uri = contract.uri(BigInt.zero());

@@ -28,7 +28,7 @@ export function handlePropertyCreated(event: PropertyCreated): void {
   property.multiplier = event.params.multiplier;
   property.bonus = event.params.bonus;
   property.protection = event.params.protection;
-  property.pools = event.params.poolIds.map((id) => id.toString());
+  property.pools = event.params.poolIds.map<string>((id) => id.toString());
 
   // Steals
   property.startRatio = event.params.startRatio;

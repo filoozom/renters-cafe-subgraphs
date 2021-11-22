@@ -59,7 +59,7 @@ export function handleAuctionWon(event: AuctionWon): void {
     );
 
     // Add owners
-    for (let j = 0; j < content.count.toU32(); i++) {
+    for (let j = 0; j < content.count.toI32(); i++) {
       // Owner
       const owner = getOwner(
         propertyId,

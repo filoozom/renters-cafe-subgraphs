@@ -9,7 +9,7 @@ import { StealableProperty } from "../../../generated/schema";
 export function getProperty(
   propertyId: BigInt,
   block: ethereum.Block,
-  factoryAddress?: Address
+  factoryAddress: Address | null = null
 ): StealableProperty {
   let property = StealableProperty.load(propertyId.toString());
 
