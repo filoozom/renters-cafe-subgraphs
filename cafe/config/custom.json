@@ -1,15 +1,15 @@
 {
   "network": "custom",
   "cafe": {
-    "address": "0xBc45cA09c3d00a9bA25eB08b70849Db43A76BE03",
+    "address": "0xe0b6438a456aB69c0ACB2A19805cA5c8264b6140",
     "startBlock": "0"
   },
   "stealableProperties": {
-    "address": "0xFFe63f7AeC1E895A182821885a6852735ED1E50F",
+    "address": "0x5Ba7C3DBf2965A5875c0039a03F56F182aF9ef88",
     "startBlock": "0"
   },
   "propertyAuction": {
-    "address": "0xE491196981ddB787f0DDa69685a2623d26570B16",
+    "address": "0xa42412F3448fD34f83015E05bECE90BB4F04c740",
     "startBlock": "0"
   }
 }
