@@ -8,6 +8,9 @@ import { getCut } from "./entities/property-auction/cut";
 import { getOwner } from "./entities/stealable-properties/owner";
 import { getProperty } from "./entities/stealable-properties/property";
 
+// Lib
+import { addToArray } from "./lib/tools";
+
 // Generated
 import {
   AuctionAdded,
@@ -29,6 +32,7 @@ export function handleAuctionAdded(event: AuctionAdded): void {
   auction.startTimestamp = event.params.startTimestamp;
 
   // Content
+  const contentIds: string[] = [];
   for (let i = 0; i < event.params.ids.length; i++) {
     const content = getContent(event.params.id, BigInt.fromU32(i), event.block);
     const property = getProperty(
@@ -43,8 +47,10 @@ export function handleAuctionAdded(event: AuctionAdded): void {
     content.save();
 
     auction.totalWeights = auction.totalWeights.plus(event.params.weights[i]);
+    contentIds.push(content.id);
   }
 
+  auction.content = contentIds;
   auction.save();
 }
 
@@ -62,7 +68,7 @@ export function handleAuctionWon(event: AuctionWon): void {
     );
 
     // Add owners
-    for (let j = 0; j < content.count.toI32(); i++) {
+    for (let j = 0; j < content.count.toI32(); j++) {
       // Owner
       const owner = getOwner(
         propertyId,
@@ -82,7 +88,7 @@ export function handleAuctionWon(event: AuctionWon): void {
 
       // Property
       property.minted = property.minted.plus(content.count);
-      property.owners.push(owner.id);
+      property.owners = addToArray<string>(property.owners, owner.id);
     }
 
     property.save();

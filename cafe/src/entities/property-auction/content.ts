@@ -4,12 +4,16 @@ import { BigInt, ethereum } from "@graphprotocol/graph-ts";
 import { PropertyAuctionContent } from "../../../generated/schema";
 import { getAuction } from "./auction";
 
+export function getContentId(auctionId: BigInt, contentId: BigInt): string {
+  return `${auctionId.toString()}-${contentId.toString()}`;
+}
+
 export function getContent(
   auctionId: BigInt,
   contentId: BigInt,
   block: ethereum.Block
 ): PropertyAuctionContent {
-  const id = `${auctionId.toString()}-${contentId.toString()}`;
+  const id = getContentId(auctionId, contentId);
   let content = PropertyAuctionContent.load(id);
 
   if (content === null) {

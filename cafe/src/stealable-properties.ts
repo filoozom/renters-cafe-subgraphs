@@ -5,6 +5,9 @@ import { getProperty } from "./entities/stealable-properties/property";
 import { getOwner } from "./entities/stealable-properties/owner";
 import { getFactory } from "./entities/stealable-properties/factory";
 
+// Lib
+import { addToArray } from "./lib/tools";
+
 // Generated
 import {
   ApprovalForAll,
@@ -70,7 +73,7 @@ export function handlePropertyStolen(event: PropertyStolen): void {
 
   // Owners
   const previousOwner = property.owners.shift();
-  property.owners.push(owner.id);
+  property.owners = addToArray<string>(property.owners, owner.id);
   property.save();
 
   // Remove the previous owner

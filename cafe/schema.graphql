@@ -196,7 +196,7 @@ type PropertyAuction @entity {
   factory: PropertyAuctionFactory!
 
   # Properties
-  content: [PropertyAuctionContent!]! @derivedFrom(field: "auction")
+  content: [PropertyAuctionContent!]!
 
   # Configuration
   startPrice: BigInt!
