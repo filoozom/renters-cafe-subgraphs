@@ -11,7 +11,7 @@ export function getUser(
   poolId: BigInt,
   block: ethereum.Block
 ): User {
-  const id = `${poolId.toString}-${address.toHex()}`;
+  const id = `${poolId.toString()}-${address.toHex()}`;
   let user = User.load(id);
 
   if (user === null) {
