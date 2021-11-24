@@ -98,6 +98,9 @@ type LP @entity {
 type StealablePropertiesFactory @entity {
   id: ID!
 
+  # Constants
+  multiplierPrecision: BigInt!
+
   # Properties
   properties: [StealableProperty!]! @derivedFrom(field: "factory")
 

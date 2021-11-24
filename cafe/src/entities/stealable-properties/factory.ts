@@ -15,6 +15,9 @@ export function getFactory(
     const contract = Contract.bind(id);
     factory = new StealablePropertiesFactory(id.toHex());
 
+    // Constants
+    factory.multiplierPrecision = contract.MULTIPLIER_PRECISION();
+
     // Configuration
     factory.uri = contract.uri(BigInt.zero());
     factory.paused = false;
