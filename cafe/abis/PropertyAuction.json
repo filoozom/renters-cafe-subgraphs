@@ -38,6 +38,12 @@
       },
       {
         "indexed": false,
+        "internalType": "uint256[]",
+        "name": "weights",
+        "type": "uint256[]"
+      },
+      {
+        "indexed": false,
         "internalType": "uint256",
         "name": "startPrice",
         "type": "uint256"
@@ -254,6 +260,11 @@
         "type": "uint256[]"
       },
       {
+        "internalType": "uint256[]",
+        "name": "weights",
+        "type": "uint256[]"
+      },
+      {
         "internalType": "uint256",
         "name": "startPrice",
         "type": "uint256"
@@ -308,6 +319,16 @@
         "internalType": "uint256",
         "name": "startTimestamp",
         "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "done",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalWeights",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -329,6 +350,32 @@
     "name": "buy",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "c__0x899dd05a",
+        "type": "bytes32"
+      }
+    ],
+    "name": "c_0x899dd05a",
+    "outputs": [],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "c__0xf31fd582",
+        "type": "bytes32"
+      }
+    ],
+    "name": "c_0xf31fd582",
+    "outputs": [],
+    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -378,6 +425,11 @@
             "type": "uint256[]"
           },
           {
+            "internalType": "uint256[]",
+            "name": "weights",
+            "type": "uint256[]"
+          },
+          {
             "internalType": "uint256",
             "name": "startPrice",
             "type": "uint256"
@@ -395,6 +447,16 @@
           {
             "internalType": "uint256",
             "name": "startTimestamp",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "done",
+            "type": "bool"
+          },
+          {
+            "internalType": "uint256",
+            "name": "totalWeights",
             "type": "uint256"
           }
         ],

@@ -19,6 +19,7 @@ export function getContent(
     // Configuration
     content.property = "";
     content.count = BigInt.zero();
+    content.weight = BigInt.zero();
   }
 
   content.timestamp = block.timestamp;

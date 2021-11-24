@@ -20,6 +20,7 @@ export function getAuction(id: BigInt, block: ethereum.Block): PropertyAuction {
     auction.endPrice = BigInt.zero();
     auction.duration = BigInt.zero();
     auction.startTimestamp = BigInt.zero();
+    auction.totalWeights = BigInt.zero();
 
     // State
     auction.done = false;

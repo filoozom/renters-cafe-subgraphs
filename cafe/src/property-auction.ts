@@ -39,7 +39,10 @@ export function handleAuctionAdded(event: AuctionAdded): void {
 
     content.property = property.id;
     content.count = event.params.counts[i];
+    content.weight = event.params.weights[i];
     content.save();
+
+    auction.totalWeights = auction.totalWeights.plus(event.params.weights[i]);
   }
 
   auction.save();
@@ -70,7 +73,10 @@ export function handleAuctionWon(event: AuctionWon): void {
       );
 
       owner.since = event.block.timestamp;
-      owner.price = event.params.price;
+      owner.price = event.params.price
+        .times(content.weight)
+        .div(auction.totalWeights)
+        .div(content.count);
       owner.protectedUntil = event.block.timestamp.plus(property.protection);
       owner.save();
 

@@ -139,7 +139,7 @@ dataSources:
         - name: PropertyAuction
           file: ./abis/PropertyAuction.json
       eventHandlers:
-        - event: AuctionAdded(uint256,uint256[],uint256[],uint256,uint256,uint256,uint256)
+        - event: AuctionAdded(uint256,uint256[],uint256[],uint256[],uint256,uint256,uint256,uint256)
           handler: handleAuctionAdded
         - event: AuctionWon(indexed uint256,indexed address,uint256)
           handler: handleAuctionWon
