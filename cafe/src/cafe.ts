@@ -73,6 +73,10 @@ export function handleAddPool(event: AddPool): void {
   pool.token = event.params.token;
   pool.allocation = event.params.allocation;
   pool.withdrawFee = event.params.withdrawFee;
+  pool.lastRewardTimestamp =
+    event.block.timestamp > cafe.startTimestamp
+      ? event.block.timestamp
+      : cafe.startTimestamp;
   pool.lp = lp.id;
   pool.save();
 
