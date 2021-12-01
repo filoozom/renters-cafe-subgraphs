@@ -72,8 +72,9 @@ export function handlePropertyStolen(event: PropertyStolen): void {
   property.timesStolen = property.timesStolen.plus(BigInt.fromU32(1));
 
   // Owners
-  const previousOwner = property.owners.shift();
-  property.owners = addToArray<string>(property.owners, owner.id);
+  const owners = property.owners
+  const previousOwner = owners.shift();
+  property.owners = addToArray<string>(owners, owner.id);
   property.save();
 
   // Remove the previous owner
