@@ -1,0 +1,15 @@
+{
+  "network": "avalanche",
+  "cafe": {
+    "address": "0x470eF6Fb745d5ED26fC28518240E2849131D6d61",
+    "startBlock": "9045235"
+  },
+  "stealableProperties": {
+    "address": "0x11b9B7aC3646cB9d51c4C3C40b18B13A28e84bc8",
+    "startBlock": "9048865"
+  },
+  "propertyAuction": {
+    "address": "0x5aDcEb7fCCdaBdCdd82c3D6E2833Fb80D0dd45D6",
+    "startBlock": "9048961"
+  }
+}
